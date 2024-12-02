@@ -5,6 +5,8 @@ public class Challenges {
         switch (day) {
             case 1:
                 new HistorianHysteria();
+            case 2:
+                new RedNosedReports();
         }
     }
 }

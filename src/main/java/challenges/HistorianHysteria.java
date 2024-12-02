@@ -9,59 +9,55 @@
 
 package challenges;
 import main.Main;
+
 public class HistorianHysteria {
-    final int size = 1000;
+    final int items = 1000;
     int solution;
 
-    String lineInput; // What each line of input is written to
-    String[] splitInput; // What takes the input once it has been split by spaces // The parsed lists of locations
-    int[][] lists = new int[2][size];
+    int[][] lists = new int[items][2];
 
-    boolean[][] compared = new boolean[2][size]; // Whether or not each list item has been compared already
+    boolean[][] compared = new boolean[items][2]; // Whether or not each list item has been compared already
     int[] lowest = new int[2]; // Stores the position of the next lowest elements from the linear search
 
     int duplicates;
 
     public HistorianHysteria() {
         // PART ZERO
-        for (int i = 0; i < size; i++) { // Loops through all inputs to parse the numbers
-            lineInput = Main.scanner.nextLine();
-            splitInput = lineInput.split("\\s+"); // This regex code just looks for sequential spaces
-            lists[0][i] = Integer.parseInt(splitInput[0]);
-            lists[1][i] = Integer.parseInt(splitInput[1]);
+        for (int i = 0; i < items; i++) { // Loops through all inputs to parse the numbers
+            lists[i] = Main.nextInts();
         }
 
         // PART ONE
 
         solution = 0;
-        for (int i = 0; i < size; i++) { // Repeats enough time to check all items
+        for (int i = 0; i < items; i++) { // Repeats enough time to check all items
 
             // Linear searches both lists to find the smallest uncompared value
             for (int l = 0; l < 2; l++) { // This line means I don't have to copy and paste my code to check the other list. Read lists[l] as the list we are looking at, and so on
-                lowest[l] = size+1; // Having a number above size is the flag that we do not have a current lowest yet
+                lowest[l] = items +1; // Having a number above size is the flag that we do not have a current lowest yet
 
-                for (int s = 0; s < size; s++) {
-                    if (!compared[l][s] && (lowest[l] > size || lists[l][lowest[l]] > lists[l][s])) { // If the current value has not been compared, and the previous lowest is either missing or smaller than the current value
+                for (int s = 0; s < items; s++) {
+                    if (!compared[s][l] && (lowest[l] > items || lists[lowest[l]][l] > lists[s][l])) { // If the current value has not been compared, and the previous lowest is either missing or smaller than the current value
                         lowest[l] = s;
                     }
                 }
-                compared[l][lowest[l]] = true; // Sets the current lowest to have been searched
+                compared[lowest[l]][l] = true; // Sets the current lowest to have been searched
             }
 
-            solution += Math.abs(lists[1][lowest[1]] - lists[0][lowest[0]]); // Adds the distance to the solution
+            solution += Math.abs(lists[lowest[1]][1] - lists[lowest[0]][0]); // Adds the distance to the solution
         }
         System.out.println(solution); // Solution to part 1
 
         // PART TWO
         solution = 0;
-        for (int i = 0; i < size; i++) { // Loops through all items in the first list
+        for (int i = 0; i < items; i++) { // Loops through all items in the first list
             duplicates = 0;
-            for (int d = 0; d < size; d++) { // Loops through all items in the second list
-                if (lists[0][i] == lists[1][d]) { // If a match, increment duplicates
+            for (int d = 0; d < items; d++) { // Loops through all items in the second list
+                if (lists[i][0] == lists[d][1]) { // If a match, increment duplicates
                     duplicates++;
                 }
             }
-            solution += lists[0][i] * duplicates; // Adds the product to the solution
+            solution += lists[i][0] * duplicates; // Adds the product to the solution
         }
         System.out.println(solution); // Solution to part 2
     }
