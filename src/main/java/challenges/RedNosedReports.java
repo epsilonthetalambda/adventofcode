@@ -1,3 +1,13 @@
+/*  02/12/24:
+ *  The second challenge, where we have to analyse the safety of different reports.
+ *  Got stuck again, this time because I didn't think about an edge case in part 2.
+ *  If you have completed day 1, you can reuse the code from that to parse the input. I decided to pull it out into a static function, so I can reuse it for later challenges.
+ *  Part one was fairly easy, check the direction of the first two, then compare each pair for wrong direction or gap size.
+ *  Part two made me have to rewrite all of my code. I started by pulling the logic out into its own function to remove clutter.
+ *  The main part of the function is basically the same, but if the dampener is activated, it checks for what to dampen, then continues without a dampen.
+ *  The thing that took me the longest was finding the direction. I was about to do something way more complicated, but taking the most common direction just works.
+ *  I'd say part 1 is fairly easy, but part 2 was quite rough.  */
+
 package challenges;
 
 import main.Main;
@@ -19,7 +29,7 @@ public class RedNosedReports {
     }
     private boolean analyse(int[] report, boolean dampener) { // Analyses whether a given report is safe or not
         // This code checks the first 3 pairs, and sets the direction to the most common direction in the sample.
-        // This is guaranteed to work because there has to be at least 2 pairs with the direction, and you can't turn that to 0 with one dampen, so it would have been unsafe anyways
+        // This is guaranteed to work because there has to be at least 2 pairs with the direction, and you can't turn that to 0 with one dampen, so if the rest of the report goes the other direction, it would have been unsafe anyways
         int increases = 0;
         for (int i = 0; i < 3; i++) {
             if (report[i+1] > report[i]) {

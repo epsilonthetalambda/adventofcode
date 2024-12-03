@@ -1,11 +1,10 @@
-/*01/12/24:
- * The first challenge, where we have to reconcile two different lists.
- * This challenge felt quite easy, however I did end up getting stuck because I misread distances as "difference of indices", not "difference of values" for part 1.
- * I'd say the hardest part for someone new to programming would be parsing the string values, because unless you know how to use the scanner and split strings, it could be very difficult.
- * Part one could also be challenging, I solved it using my knowledge of linear search and the idea of using a companion bool array to keep track of what hasn't been compared yet.
- * Part two was dead simple, I think anyone with a knowledge of for loops could easily solve that part on its own.
- * Overall, good warm-up for the rest of the challenge
- * */
+/*  01/12/24:
+ *  The first challenge, where we have to reconcile two different lists.
+ *  This challenge felt quite easy, however I did end up getting stuck because I misread distances as "difference of indices", not "difference of values" for part 1.
+ *  I'd say the hardest part for someone new to programming would be parsing the string values, because unless you know how to use the scanner and split strings, it could be very difficult.
+ *  Part one could also be challenging, I solved it using my knowledge of linear search and the idea of using a companion bool array to keep track of what hasn't been compared yet.
+ *  Part two was dead simple, I think anyone with a knowledge of for loops could easily solve that part on its own.
+ *  Overall, good warm-up for the rest of the challenge.  */
 
 package challenges;
 import main.Main;
