@@ -7,6 +7,8 @@ public class Challenges {
                 new HistorianHysteria();
             case 2:
                 new RedNosedReports();
+            case 3:
+                new MullItOver();
         }
     }
 }
