@@ -8,24 +8,19 @@
  *  The thing that took me the longest was finding the direction. I was about to do something way more complicated, but taking the most common direction just works.
  *  I'd say part 1 is fairly easy, but part 2 was quite rough.  */
 
-package challenges;
+package Challenges;
+import Main.Main;
+public class RedNosedReports extends Challenge {
+    private boolean direction;
 
-import main.Main;
-
-public class RedNosedReports {
-    final int reports = 1000;
-    int solution;
-
-    boolean direction; // True if the levels are increasing and vice versa, declared here to avoid variable hot potato
-
-    public RedNosedReports() {
+    public RedNosedReports(int part) {
+        assert part == 1 || part == 2;
         solution = 0;
-        for (int i = 0; i < reports; i++) { // Runs the analyse function on every report.
-            if (analyse(Main.nextInts(), true)) {
+        for (int i = 0; i < 1000; i++) { // Runs the analyse function on every report.
+            if (analyse(Main.nextInts(), part == 2)) {
                 solution ++;
             }
         }
-        System.out.println(solution);
     }
     private boolean analyse(int[] report, boolean dampener) { // Analyses whether a given report is safe or not
         // This code checks the first 3 pairs, and sets the direction to the most common direction in the sample.
@@ -36,6 +31,7 @@ public class RedNosedReports {
                 increases++;
             }
         }
+        // True if the levels are increasing and vice versa.
         direction = (increases > 1);
 
         for (int l = 1; l < report.length; l++) { // For each pair of levels, check if it is invalid
@@ -44,7 +40,7 @@ public class RedNosedReports {
                     dampener = false;
                     // We now get to decide which level to dampen. If we dampen the first level, it doesn't directly affect the future checks, so we don't have to change any levels.
                     // However, we need to check if that would mess up previous or future checks. If it will, we dampen the second level, and let the next loop see if that fails.
-                    if ((l < report.length - 1 && invalid(report[l], report[l + 1])) || (l > 1 && invalid(report[l - 2], report[l]))) { // Clunky because we have to make sure not to index out of bounds. If I used try-catch, it would need 2 ifs in parallel, which would be even more clunky
+                    if ((l < report.length - 1 && invalid(report[l], report[l + 1])) || (l > 1 && invalid(report[l - 2], report[l]))) { // Clunky because we have to make sure not to index out of bounds. If I used try-ignored, it would need 2 ifs in parallel, which would be even more clunky
                         report[l] = report[l - 1];
                     }
                 } else {
