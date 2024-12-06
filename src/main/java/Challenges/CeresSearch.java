@@ -1,3 +1,10 @@
+/*  01/12/24:
+ *  The fourth challenge, where we have to solve a word search.
+ *  In my opinion, this challenge is the 2nd easiest so far, based on the fact that the obvious implementation is also quick.
+ *  Using the char array again, but this time 2D, we look through each char and do a check.
+ *  Part one could have seen the use of masks, but my solution of using variables to change the direction of search seems very streamlined, at the cost of one extra comparison per char.
+ *  Part two used similar techniques, but with some more complicated logic, and less characters to search too.
+ *  A nice simple challenge that was fun to clean up.  */
 
 package Challenges;
 import Main.Main;

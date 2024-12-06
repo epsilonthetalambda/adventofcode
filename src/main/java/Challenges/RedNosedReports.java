@@ -17,7 +17,7 @@ public class RedNosedReports extends Challenge {
         assert part == 1 || part == 2;
         solution = 0;
         for (int i = 0; i < 1000; i++) { // Runs the analyse function on every report.
-            if (analyse(Main.nextInts(), part == 2)) {
+            if (analyse(Main.nextInts(" "), part == 2)) {
                 solution ++;
             }
         }

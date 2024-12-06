@@ -15,7 +15,7 @@ public class HistorianHysteria extends Challenge {
         // PART ZERO
         lists = new int[length][2];
         for (int i = 0; i < length; i++) { // Loops through all inputs to parse the numbers
-            lists[i] = Main.nextInts();
+            lists[i] = Main.nextInts("   ");
         }
         solution = 0;
         if (part == 1) {
